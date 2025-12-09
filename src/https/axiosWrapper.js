@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const defaultHeader = {
-  "Content-Type": "application/json",
   Accept: "application/json",
 };
 

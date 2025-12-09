@@ -336,14 +336,23 @@ const Modal = ({ modalType, handleClose }) => {
 
     switch (modalType) {
       case "table":
+        if (!data.tableNo || !data.seats) {
+          return enqueueSnackbar("Please fill all fields for Table.", { variant: "error" });
+        }
         tableMutation.mutate(data);
         break;
       case "category":
+        if (!data.name || !data.image) {
+          return enqueueSnackbar("Please provide Category Name and Image.", { variant: "error" });
+        }
         formDataToSend.append("name", data.name);
         formDataToSend.append("image", data.image);
         categoryMutation.mutate(formDataToSend);
         break;
       case "dishes":
+        if (!data.name || !data.price || !data.category || !data.image || !data.description) {
+          return enqueueSnackbar("Please fill all fields for Dish, including Image.", { variant: "error" });
+        }
         formDataToSend.append("name", data.name);
         formDataToSend.append("price", data.price);
         formDataToSend.append("category", data.category);
