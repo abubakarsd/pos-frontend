@@ -29,9 +29,14 @@ const Login = () => {
     onSuccess: (res) => {
       const { data } = res;
       console.log(data);
-      const { _id, name, email, phone, role } = data.data;
-      dispatch(setUser({ _id, name, email, phone, role }));
-      navigate("/");
+      if (data && data.data) {
+        const { _id, name, email, phone, role } = data.data;
+        dispatch(setUser({ _id, name, email, phone, role }));
+        navigate("/");
+      } else {
+        enqueueSnackbar("Received invalid response from server.", { variant: "error" });
+        console.error("Invalid login response:", data);
+      }
     },
     onError: (error) => {
       const { response } = error;

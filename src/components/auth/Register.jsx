@@ -29,18 +29,24 @@ const Register = ({ setIsRegister }) => {
     mutationFn: (reqData) => register(reqData),
     onSuccess: (res) => {
       const { data } = res;
-      enqueueSnackbar(data.message, { variant: "success" });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-        role: "",
-      });
+      if (data && data.message) {
+        enqueueSnackbar(data.message, { variant: "success" });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          password: "",
+          role: "",
+        });
 
-      setTimeout(() => {
+        setTimeout(() => {
+          setIsRegister(false);
+        }, 1500);
+      } else {
+        enqueueSnackbar("Registration successful, but received unexpected response.", { variant: "warning" });
+        console.error("Unexpected register response:", data);
         setIsRegister(false);
-      }, 1500);
+      }
     },
     onError: (error) => {
       const { response } = error;

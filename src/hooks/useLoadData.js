@@ -14,8 +14,18 @@ const useLoadData = () => {
       try {
         const { data } = await getUserData();
         console.log(data);
-        const { _id, name, email, phone, role } = data.data;
-        dispatch(setUser({ _id, name, email, phone, role }));
+        if (data && data.success && data.data) {
+          const { _id, name, email, phone, role } = data.data;
+          dispatch(setUser({ _id, name, email, phone, role }));
+        } else {
+          console.error("Invalid API response format. Possible wrong Backend URL.", data);
+          // Verify if we received HTML (SPA fallback)
+          if (typeof data === 'string' && data.startsWith('<!doctype html>')) {
+            console.error("Received HTML instead of JSON. Check VITE_BACKEND_URL.");
+          }
+          dispatch(removeUser());
+          navigate("/auth");
+        }
       } catch (error) {
         dispatch(removeUser());
         navigate("/auth");
