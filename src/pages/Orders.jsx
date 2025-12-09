@@ -10,9 +10,9 @@ const Orders = () => {
 
   const [status, setStatus] = useState("all");
 
-    useEffect(() => {
-      document.title = "POS | Orders"
-    }, [])
+  useEffect(() => {
+    document.title = "POS | Orders"
+  }, [])
 
   const { data: resData, isError } = useQuery({
     queryKey: ["orders"],
@@ -22,20 +22,20 @@ const Orders = () => {
     placeholderData: keepPreviousData
   })
 
-  if(isError) {
-    enqueueSnackbar("Something went wrong!", {variant: "error"})
+  if (isError) {
+    enqueueSnackbar("Something went wrong!", { variant: "error" })
   }
 
   return (
-    <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden">
-      <div className="flex items-center justify-between px-10 py-4">
-        <div className="flex items-center gap-4">
+    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto md:overflow-hidden">
+      <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-4 gap-4 md:gap-0">
+        <div className="flex items-center gap-4 self-start md:self-auto">
           <BackButton />
           <h1 className="text-[#f5f5f5] text-2xl font-bold tracking-wider">
             Orders
           </h1>
         </div>
-        <div className="flex items-center justify-around gap-4">
+        <div className="flex items-center justify-start md:justify-around gap-4 flex-wrap">
           <button onClick={() => setStatus("all")} className={`text-[#ababab] text-lg ${status === "all" && "bg-[#383838] rounded-lg px-5 py-2"}  rounded-lg px-5 py-2 font-semibold`}>
             All
           </button>
@@ -51,13 +51,13 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 px-16 py-4 overflow-y-scroll scrollbar-hide">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4 md:px-16 py-4 overflow-y-auto md:overflow-y-scroll scrollbar-hide h-[calc(100vh-12rem)] md:h-auto pb-20 md:pb-4">
         {
           resData?.data.data.length > 0 ? (
             resData.data.data.map((order) => {
               return <OrderCard key={order._id} order={order} />
             })
-          ) : <p className="col-span-3 text-gray-500">No orders available</p>
+          ) : <p className="col-span-1 md:col-span-3 text-gray-500">No orders available</p>
         }
       </div>
 

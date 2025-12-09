@@ -11,13 +11,15 @@ import { useSelector } from "react-redux";
 import useLoadData from "./hooks/useLoadData";
 import FullScreenLoader from "./components/shared/FullScreenLoader"
 
+import AdminRoute from "./components/shared/AdminRoute";
+
 function Layout() {
   const isLoading = useLoadData();
   const location = useLocation();
   const hideHeaderRoutes = ["/auth"];
   const { isAuth } = useSelector(state => state.user);
 
-  if(isLoading) return <FullScreenLoader />
+  if (isLoading) return <FullScreenLoader />
 
   return (
     <>
@@ -59,9 +61,9 @@ function Layout() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoutes>
+            <AdminRoute>
               <Dashboard />
-            </ProtectedRoutes>
+            </AdminRoute>
           }
         />
         <Route path="*" element={<div>Not Found</div>} />

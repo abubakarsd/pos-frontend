@@ -9,23 +9,23 @@ import PopularDishes from "../components/home/PopularDishes";
 
 const Home = () => {
 
-    useEffect(() => {
-      document.title = "POS | Home"
-    }, [])
+  useEffect(() => {
+    document.title = "POS | Home"
+  }, [])
 
   return (
-    <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden flex gap-3">
+    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row gap-3">
       {/* Left Div */}
-      <div className="flex-[3]">
+      <div className="w-full md:flex-[3] flex flex-col">
         <Greetings />
-        <div className="flex items-center w-full gap-3 px-8 mt-8">
+        <div className="flex flex-col md:flex-row items-center w-full gap-3 px-8 mt-8">
           <MiniCard title="Total Earnings" icon={<BsCashCoin />} number={512} footerNum={1.6} />
           <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={3.6} />
         </div>
         <RecentOrders />
       </div>
       {/* Right Div */}
-      <div className="flex-[2]">
+      <div className="w-full md:flex-[2] mt-4 md:mt-0">
         <PopularDishes />
       </div>
       <BottomNav />
