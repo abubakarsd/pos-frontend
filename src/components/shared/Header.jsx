@@ -72,7 +72,7 @@ const Header = () => {
           </div>
           <IoLogOut
             onClick={handleLogout}
-            className="text-[#f5f5f5] ml-2"
+            className={`text-[#f5f5f5] ml-2 ${logoutMutation.isPending ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
             size={40}
           />
         </div>

@@ -214,17 +214,15 @@ const Bill = () => {
       <div className="flex items-center gap-3 px-5 mt-4">
         <button
           onClick={() => setPaymentMethod("Cash")}
-          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${
-            paymentMethod === "Cash" ? "bg-[#383737]" : ""
-          }`}
+          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${paymentMethod === "Cash" ? "bg-[#383737]" : ""
+            }`}
         >
           Cash
         </button>
         <button
           onClick={() => setPaymentMethod("Online")}
-          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${
-            paymentMethod === "Online" ? "bg-[#383737]" : ""
-          }`}
+          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${paymentMethod === "Online" ? "bg-[#383737]" : ""
+            }`}
         >
           Online
         </button>
@@ -236,9 +234,10 @@ const Bill = () => {
         </button>
         <button
           onClick={handlePlaceOrder}
-          className="bg-[#f6b100] px-4 py-3 w-full rounded-lg text-[#1f1f1f] font-semibold text-lg"
+          disabled={orderMutation.isPending}
+          className={`bg-[#f6b100] px-4 py-3 w-full rounded-lg text-[#1f1f1f] font-semibold text-lg ${orderMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-          Place Order
+          {orderMutation.isPending ? "Placing Order..." : "Place Order"}
         </button>
       </div>
 

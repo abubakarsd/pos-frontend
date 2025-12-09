@@ -423,9 +423,10 @@ const Modal = ({ modalType, handleClose }) => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold"
+              disabled={tableMutation.isPending}
+              className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${tableMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              Add Table
+              {tableMutation.isPending ? "Adding Table..." : "Add Table"}
             </button>
           </>
         );
@@ -464,9 +465,10 @@ const Modal = ({ modalType, handleClose }) => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold"
+              disabled={categoryMutation.isPending}
+              className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${categoryMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              Add Category
+              {categoryMutation.isPending ? "Adding Category..." : "Add Category"}
             </button>
           </>
         );
@@ -549,9 +551,10 @@ const Modal = ({ modalType, handleClose }) => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold"
+              disabled={dishesMutation.isPending}
+              className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${dishesMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              Add Dish
+              {dishesMutation.isPending ? "Adding Dish..." : "Add Dish"}
             </button>
           </>
         );
