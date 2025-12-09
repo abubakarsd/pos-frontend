@@ -3,7 +3,7 @@ import { register } from "../../https";
 import { useMutation } from "@tanstack/react-query";
 import { enqueueSnackbar } from "notistack";
 
-const Register = ({setIsRegister}) => {
+const Register = ({ setIsRegister }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,7 +37,7 @@ const Register = ({setIsRegister}) => {
         password: "",
         role: "",
       });
-      
+
       setTimeout(() => {
         setIsRegister(false);
       }, 1500);
@@ -128,9 +128,8 @@ const Register = ({setIsRegister}) => {
                   key={role}
                   type="button"
                   onClick={() => handleRoleSelection(role)}
-                  className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] ${
-                    formData.role === role ? "bg-indigo-700" : ""
-                  }`}
+                  className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] ${formData.role === role ? "bg-indigo-700" : ""
+                    }`}
                 >
                   {role}
                 </button>
@@ -141,9 +140,10 @@ const Register = ({setIsRegister}) => {
 
         <button
           type="submit"
-          className="w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold"
+          disabled={registerMutation.isPending}
+          className={`w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${registerMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-          Sign up
+          {registerMutation.isPending ? "Signing up..." : "Sign up"}
         </button>
       </form>
     </div>

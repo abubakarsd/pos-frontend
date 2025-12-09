@@ -5,39 +5,39 @@ import { enqueueSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
- 
+
 const Login = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const[formData, setFormData] = useState({
-      email: "",
-      password: "",
-    });
-  
-    const handleChange = (e) => {
-      setFormData({...formData, [e.target.name]: e.target.value});
-    }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      loginMutation.mutate(formData);
-    }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
 
-    const loginMutation = useMutation({
-      mutationFn: (reqData) => login(reqData),
-      onSuccess: (res) => {
-          const { data } = res;
-          console.log(data);
-          const { _id, name, email, phone, role } = data.data;
-          dispatch(setUser({ _id, name, email, phone, role }));
-          navigate("/");
-      },
-      onError: (error) => {
-        const { response } = error;
-        enqueueSnackbar(response.data.message, { variant: "error" });
-      }
-    })
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginMutation.mutate(formData);
+  }
+
+  const loginMutation = useMutation({
+    mutationFn: (reqData) => login(reqData),
+    onSuccess: (res) => {
+      const { data } = res;
+      console.log(data);
+      const { _id, name, email, phone, role } = data.data;
+      dispatch(setUser({ _id, name, email, phone, role }));
+      navigate("/");
+    },
+    onError: (error) => {
+      const { response } = error;
+      enqueueSnackbar(response.data.message, { variant: "error" });
+    }
+  })
 
   return (
     <div>
@@ -77,9 +77,10 @@ const Login = () => {
 
         <button
           type="submit"
-          className="w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold"
+          disabled={loginMutation.isPending}
+          className={`w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${loginMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-          Sign in
+          {loginMutation.isPending ? "Signing in..." : "Sign in"}
         </button>
       </form>
     </div>
