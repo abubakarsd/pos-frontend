@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
-import restaurant from "../assets/images/restaurant-img.jpg"
-import logo from "../assets/images/logo.png"
-import Register from "../components/auth/Register";
+import React, { useEffect } from "react";
+import restaurant from "../assets/images/restaurant-bg.jpg"
+import logo from "../assets/images/logo.jpg"
 import Login from "../components/auth/Login";
 
 const Auth = () => {
 
   useEffect(() => {
-    document.title = "POS | Auth"
+    document.title = "POS | Login"
   }, [])
-
-  const [isRegister, setIsRegister] = useState(false);
 
   return (
     <div className="flex min-h-screen w-full">
@@ -25,9 +22,9 @@ const Auth = () => {
         {/* Quote at bottom */}
         <blockquote className="absolute bottom-10 px-8 mb-10 text-2xl italic text-white">
           "Serve customers the best food with prompt and friendly service in a
-          welcoming atmosphere, and they’ll keep coming back."
+          welcoming atmosphere, and they'll keep coming back."
           <br />
-          <span className="block mt-4 text-yellow-400">- Founder of C'Hub</span>
+          <span className="block mt-4 text-red-500">- Founder of C'Hub</span>
         </blockquote>
       </div>
 
@@ -38,24 +35,12 @@ const Auth = () => {
           <h1 className="text-lg font-semibold text-[#f5f5f5] tracking-wide">C'Hub</h1>
         </div>
 
-        <h2 className="text-4xl text-center mt-10 font-semibold text-yellow-400 mb-10">
-          {isRegister ? "Employee Registration" : "Employee Login"}
+        <h2 className="text-4xl text-center mt-10 font-semibold text-red-500 mb-10">
+          Employee Login
         </h2>
 
-        {/* Components */}  
-        {isRegister ? <Register setIsRegister={setIsRegister} /> : <Login />}
-
-
-        <div className="flex justify-center mt-6">
-          <p className="text-sm text-[#ababab]">
-            {isRegister ? "Already have an account?" : "Don't have an account?"}
-            <a onClick={() => setIsRegister(!isRegister)} className="text-yellow-400 font-semibold hover:underline" href="#">
-              {isRegister ? "Sign in" : "Sign up"}
-            </a>
-          </p>
-        </div>
-
-
+        {/* Login Component */}
+        <Login />
       </div>
     </div>
   );

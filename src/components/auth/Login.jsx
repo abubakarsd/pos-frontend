@@ -83,7 +83,7 @@ const Login = () => {
         <button
           type="submit"
           disabled={loginMutation.isPending}
-          className={`w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${loginMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`w-full rounded-lg mt-6 py-3 text-lg bg-red-500 text-white font-bold ${loginMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           {loginMutation.isPending ? "Signing in..." : "Sign in"}
         </button>

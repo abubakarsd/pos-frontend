@@ -30,7 +30,7 @@ const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
                     } md:translate-x-0 transition-transform duration-300 ease-in-out z-50 flex flex-col border-r border-[#262626]`}
             >
                 <div className="p-6 text-center border-b border-[#262626]">
-                    <h1 className="text-2xl font-bold text-yellow-400">Admin Panel</h1>
+                    <h1 className="text-2xl font-bold text-red-500">Admin Panel</h1>
                 </div>
 
                 <nav className="flex-1 mt-6 px-4 space-y-2">
@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
                             key={link.name}
                             to={link.path}
                             className={`flex items-center gap-4 px-4 py-3 rounded-lg text-lg font-medium transition-colors ${location.pathname === link.path
-                                ? "bg-yellow-400 text-[#1f1f1f]"
+                                ? "bg-red-500 text-white"
                                 : "text-[#ababab] hover:bg-[#262626] hover:text-white"
                                 }`}
                             onClick={() => window.innerWidth < 768 && toggleSidebar()}

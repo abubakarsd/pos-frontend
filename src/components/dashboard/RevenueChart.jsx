@@ -25,7 +25,7 @@ const RevenueChart = () => {
                             contentStyle={{ backgroundColor: "#262626", border: "none", borderRadius: "8px", color: "#fff" }}
                             cursor={{ fill: "transparent" }}
                         />
-                        <Bar dataKey="revenue" fill="#fbbf24" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="revenue" fill="#ef4444" radius={[4, 4, 0, 0]} />
                     </BarChart>
                 </ResponsiveContainer>
             </div>

@@ -147,7 +147,7 @@ const Register = ({ setIsRegister }) => {
         <button
           type="submit"
           disabled={registerMutation.isPending}
-          className={`w-full rounded-lg mt-6 py-3 text-lg bg-yellow-400 text-gray-900 font-bold ${registerMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`w-full rounded-lg mt-6 py-3 text-lg bg-red-500 text-white font-bold ${registerMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           {registerMutation.isPending ? "Signing up..." : "Sign up"}
         </button>
