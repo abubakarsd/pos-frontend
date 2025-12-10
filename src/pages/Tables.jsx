@@ -55,17 +55,22 @@ const Tables = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 px-4 md:px-16 py-4 max-h-[calc(100vh-15rem)] overflow-y-auto scrollbar-hide">
-        {resData?.data.data.map((table) => {
+        {resData?.data?.data?.map((table) => {
           return (
             <TableCard
+              key={table._id}
               id={table._id}
               name={table.tableNo}
               status={table.status}
-              initials={table?.currentOrder?.customerDetails.name}
+              initials={table?.currentOrder?.customerDetails?.name}
               seats={table.seats}
             />
           );
-        })}
+        }) || (
+            <div className="col-span-full text-center text-gray-400 py-10">
+              No tables available
+            </div>
+          )}
       </div>
 
       <BottomNav />

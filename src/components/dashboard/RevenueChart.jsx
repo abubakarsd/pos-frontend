@@ -12,6 +12,18 @@ const data = [
 ];
 
 const RevenueChart = () => {
+    // Ensure data is always defined
+    if (!data || data.length === 0) {
+        return (
+            <div className="bg-[#1f1f1f] p-6 rounded-xl border border-[#262626]">
+                <h2 className="text-white text-lg font-bold mb-6">Weekly Revenue</h2>
+                <div className="h-80 w-full flex items-center justify-center">
+                    <p className="text-gray-400">No revenue data available</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="bg-[#1f1f1f] p-6 rounded-xl border border-[#262626]">
             <h2 className="text-white text-lg font-bold mb-6">Weekly Revenue</h2>
