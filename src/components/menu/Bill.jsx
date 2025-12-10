@@ -52,7 +52,7 @@ const Bill = () => {
       return;
     }
 
-    if (paymentMethod === "Online") {
+    if (paymentMethod === "Card") {
       // load the script
       try {
         const res = await loadScript(
@@ -223,11 +223,11 @@ const Bill = () => {
           Cash
         </button>
         <button
-          onClick={() => setPaymentMethod("Online")}
-          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${paymentMethod === "Online" ? "bg-[#383737]" : ""
+          onClick={() => setPaymentMethod("Card")}
+          className={`bg-[#1f1f1f] px-4 py-3 w-full rounded-lg text-[#ababab] font-semibold ${paymentMethod === "Card" ? "bg-[#383737]" : ""
             }`}
         >
-          Online
+          Card
         </button>
       </div>
 
