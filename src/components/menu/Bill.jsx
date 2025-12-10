@@ -12,6 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { removeAllItems } from "../../redux/slices/cartSlice";
 import { removeCustomer } from "../../redux/slices/customerSlice";
 import Invoice from "../invoice/Invoice";
+import ReceiptModal from "./ReceiptModal";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -40,6 +41,7 @@ const Bill = () => {
   const [paymentMethod, setPaymentMethod] = useState();
   const [showInvoice, setShowInvoice] = useState(false);
   const [orderInfo, setOrderInfo] = useState();
+  const [showReceipt, setShowReceipt] = useState(false);
 
   const handlePlaceOrder = async () => {
     if (!paymentMethod) {
@@ -170,10 +172,11 @@ const Bill = () => {
       enqueueSnackbar("Order Placed!", {
         variant: "success",
       });
-      setShowInvoice(true);
+      setShowReceipt(true); // Show receipt modal
     },
     onError: (error) => {
       console.log(error);
+      enqueueSnackbar("Something went wrong!", { variant: "error" });
     },
   });
 
@@ -228,10 +231,7 @@ const Bill = () => {
         </button>
       </div>
 
-      <div className="flex items-center gap-3 px-5 mt-4">
-        <button className="bg-[#025cca] px-4 py-3 w-full rounded-lg text-[#f5f5f5] font-semibold text-lg">
-          Print Receipt
-        </button>
+      <div className="px-5 mt-4">
         <button
           onClick={handlePlaceOrder}
           disabled={orderMutation.isPending}
@@ -243,6 +243,10 @@ const Bill = () => {
 
       {showInvoice && (
         <Invoice orderInfo={orderInfo} setShowInvoice={setShowInvoice} />
+      )}
+
+      {showReceipt && (
+        <ReceiptModal orderInfo={orderInfo} onClose={() => setShowReceipt(false)} />
       )}
     </>
   );

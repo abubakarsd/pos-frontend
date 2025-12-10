@@ -97,37 +97,43 @@ export const startersItem = [
     id: 1,
     name: "Paneer Tikka",
     price: 250,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: paneerTikka
   },
   {
     id: 2,
     name: "Chicken Tikka",
     price: 300,
-    category: "Non-Vegetarian"
+    category: "Non-Vegetarian",
+    image: butterChicken
   },
   {
     id: 3,
     name: "Tandoori Chicken",
     price: 350,
-    category: "Non-Vegetarian"
+    category: "Non-Vegetarian",
+    image: butterChicken
   },
   {
     id: 4,
     name: "Samosa",
     price: 100,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: choleBhature
   },
   {
     id: 5,
     name: "Aloo Tikki",
     price: 120,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: pooriSabji
   },
   {
     id: 6,
     name: "Hara Bhara Kebab",
     price: 220,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: paneerTikka
   }
 ];
 
@@ -136,37 +142,43 @@ export const mainCourse = [
     id: 1,
     name: "Butter Chicken",
     price: 400,
-    category: "Non-Vegetarian"
+    category: "Non-Vegetarian",
+    image: butterChicken
   },
   {
     id: 2,
     name: "Paneer Butter Masala",
     price: 350,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: palakPaneer
   },
   {
     id: 3,
     name: "Chicken Biryani",
     price: 450,
-    category: "Non-Vegetarian"
+    category: "Non-Vegetarian",
+    image: biryani
   },
   {
     id: 4,
     name: "Dal Makhani",
     price: 180,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: rajmaChawal
   },
   {
     id: 5,
     name: "Kadai Paneer",
     price: 300,
-    category: "Vegetarian"
+    category: "Vegetarian",
+    image: paneerTikka
   },
   {
     id: 6,
     name: "Rogan Josh",
     price: 500,
-    category: "Non-Vegetarian"
+    category: "Non-Vegetarian",
+    image: roganJosh
   }
 ];
 
