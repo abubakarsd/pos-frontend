@@ -28,7 +28,7 @@ const Tables = () => {
   console.log(resData);
 
   return (
-    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto pb-20 md:pb-0">
+    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto pb-24 md:pb-0">
       <div className="flex items-center justify-between px-10 py-4">
         <div className="flex items-center gap-4">
           <BackButton />

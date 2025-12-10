@@ -41,7 +41,7 @@ const Menu = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col md:flex-row gap-3 overflow-hidden pb-20 md:pb-0">
+      <div className="flex-1 flex flex-col md:flex-row gap-3 overflow-hidden pb-24 md:pb-0">
         {/* Left Side - Menu Items (Scrollable) */}
         <div className="w-full md:flex-[3] flex flex-col overflow-hidden">
           <MenuContainer />

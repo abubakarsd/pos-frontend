@@ -14,7 +14,7 @@ const Home = () => {
   }, [])
 
   return (
-    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row gap-3 pb-20 md:pb-0">
+    <section className="bg-[#1f1f1f] h-auto md:h-[calc(100vh-5rem)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row gap-3 pb-24 md:pb-0">
       {/* Left Div */}
       <div className="w-full md:flex-[3] flex flex-col">
         <Greetings />
