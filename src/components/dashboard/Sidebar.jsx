@@ -1,10 +1,16 @@
 import React from "react";
 import { MdDashboard, MdRestaurantMenu, MdTableBar, MdSettings, MdLogout, MdReceipt } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "../../https";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../../redux/slices/userSlice";
 
 const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const links = [
         { name: "Dashboard", icon: <MdDashboard />, path: "/dashboard" },
@@ -13,6 +19,21 @@ const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
         { name: "Tables", icon: <MdTableBar />, path: "/tables" },
         // { name: "Settings", icon: <MdSettings />, path: "/settings" },
     ];
+
+    const logoutMutation = useMutation({
+        mutationFn: () => logout(),
+        onSuccess: () => {
+            dispatch(removeUser());
+            navigate("/auth");
+        },
+        onError: (error) => {
+            console.error("Logout error:", error);
+        },
+    });
+
+    const handleLogout = () => {
+        logoutMutation.mutate();
+    };
 
     return (
         <>
@@ -79,9 +100,13 @@ const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
                 </nav>
 
                 <div className="p-4 border-t border-[#262626]">
-                    <button className="flex items-center gap-4 px-4 py-3 w-full rounded-lg text-lg font-medium text-red-500 hover:bg-[#260000] transition-colors">
+                    <button
+                        onClick={handleLogout}
+                        disabled={logoutMutation.isPending}
+                        className={`flex items-center gap-4 px-4 py-3 w-full rounded-lg text-lg font-medium text-red-500 hover:bg-[#260000] transition-colors ${logoutMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
+                    >
                         <span className="text-2xl"><MdLogout /></span>
-                        Logout
+                        {logoutMutation.isPending ? "Logging out..." : "Logout"}
                     </button>
                 </div>
             </motion.div>
