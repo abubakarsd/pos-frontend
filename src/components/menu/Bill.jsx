@@ -143,9 +143,14 @@ const Bill = () => {
           totalWithTax: totalPriceWithTax,
         },
         items: cartData,
-        table: customerData.table?.tableId,
         paymentMethod: paymentMethod,
       };
+
+      // Only add table if it exists
+      if (customerData.table?.tableId) {
+        orderData.table = customerData.table.tableId;
+      }
+
       orderMutation.mutate(orderData);
     }
   };
