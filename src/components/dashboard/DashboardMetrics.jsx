@@ -18,7 +18,7 @@ const DashboardMetrics = () => {
     const metrics = [
         { title: "Total Revenue", value: "$12,450", icon: <FaDollarSign />, color: "bg-green-500" },
         { title: "Total Orders", value: "1,240", icon: <FaClipboardList />, color: "bg-blue-500" },
-        { title: "Active Tables", value: "8", icon: <FaUserFriends />, color: "bg-yellow-500" },
+        { title: "Active Tables", value: "8", icon: <FaUserFriends />, color: "bg-red-500" },
         { title: "Total Dishes", value: "45", icon: <FaUtensils />, color: "bg-purple-500" },
     ];
 

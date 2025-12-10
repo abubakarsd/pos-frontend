@@ -68,14 +68,14 @@ const RecentOrders = () => {
                 <td className="p-4">
                   <select
                     className={`bg-[#1a1a1a] text-[#f5f5f5] border border-gray-500 p-2 rounded-lg focus:outline-none ${order.orderStatus === "Ready"
-                        ? "text-green-500"
-                        : "text-yellow-500"
+                      ? "text-green-500"
+                      : "text-red-500"
                       }`}
                     value={order.orderStatus}
                     onChange={(e) => handleStatusChange({ orderId: order._id, orderStatus: e.target.value })}
                     disabled={orderStatusUpdateMutation.isPending}
                   >
-                    <option className="text-yellow-500" value="In Progress">
+                    <option className="text-red-500" value="In Progress">
                       In Progress
                     </option>
                     <option className="text-green-500" value="Ready">
