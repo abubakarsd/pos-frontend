@@ -48,7 +48,22 @@ const Bill = () => {
       enqueueSnackbar("Please select a payment method!", {
         variant: "warning",
       });
+      return;
+    }
 
+    // Validate customer data
+    if (!customerData.customerName || !customerData.customerPhone || !customerData.guests) {
+      enqueueSnackbar("Missing customer information! Please go back and select a table first.", {
+        variant: "error",
+      });
+      return;
+    }
+
+    // Validate cart has items
+    if (!cartData || cartData.length === 0) {
+      enqueueSnackbar("Cart is empty! Please add items before placing order.", {
+        variant: "warning",
+      });
       return;
     }
 
