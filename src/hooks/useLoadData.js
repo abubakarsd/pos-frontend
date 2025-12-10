@@ -2,14 +2,21 @@ import { useDispatch } from "react-redux";
 import { getUserData } from "../https";
 import { useEffect, useState } from "react";
 import { removeUser, setUser } from "../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const useLoadData = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Skip fetching user data on auth page to prevent auto-login after logout
+    if (location.pathname === "/auth") {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchUser = async () => {
       try {
         const { data } = await getUserData();
@@ -36,7 +43,7 @@ const useLoadData = () => {
     };
 
     fetchUser();
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, location.pathname]);
 
   return isLoading;
 };

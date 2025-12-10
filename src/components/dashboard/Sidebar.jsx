@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { logout } from "../../https";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../../redux/slices/userSlice";
+import Spinner from "../shared/Spinner";
 
 const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
     const location = useLocation();
@@ -106,7 +107,14 @@ const Sidebar = ({ isOpen, toggleSidebar, onOpenModal }) => {
                         className={`flex items-center gap-4 px-4 py-3 w-full rounded-lg text-lg font-medium text-red-500 hover:bg-[#260000] transition-colors ${logoutMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
                     >
                         <span className="text-2xl"><MdLogout /></span>
-                        {logoutMutation.isPending ? "Logging out..." : "Logout"}
+                        {logoutMutation.isPending ? (
+                            <div className="flex items-center gap-2">
+                                <Spinner size="sm" color="red" />
+                                <span>Logging out...</span>
+                            </div>
+                        ) : (
+                            "Logout"
+                        )}
                     </button>
                 </div>
             </motion.div>

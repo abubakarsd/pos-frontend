@@ -305,6 +305,7 @@ import { IoMdClose } from "react-icons/io";
 import { useMutation } from "@tanstack/react-query";
 import { addTable, addCategory, addDish } from "../../https";
 import { enqueueSnackbar } from "notistack";
+import Spinner from "../shared/Spinner";
 
 const Modal = ({ modalType, handleClose }) => {
   const [formData, setFormData] = useState({
@@ -435,7 +436,14 @@ const Modal = ({ modalType, handleClose }) => {
               disabled={tableMutation.isPending}
               className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-red-500 text-white font-bold ${tableMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              {tableMutation.isPending ? "Adding Table..." : "Add Table"}
+              {tableMutation.isPending ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Spinner size="sm" color="white" />
+                  <span>Adding Table...</span>
+                </div>
+              ) : (
+                "Add Table"
+              )}
             </button>
           </>
         );
@@ -477,7 +485,14 @@ const Modal = ({ modalType, handleClose }) => {
               disabled={categoryMutation.isPending}
               className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-red-500 text-white font-bold ${categoryMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              {categoryMutation.isPending ? "Adding Category..." : "Add Category"}
+              {categoryMutation.isPending ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Spinner size="sm" color="white" />
+                  <span>Adding Category...</span>
+                </div>
+              ) : (
+                "Add Category"
+              )}
             </button>
           </>
         );
@@ -563,7 +578,14 @@ const Modal = ({ modalType, handleClose }) => {
               disabled={dishesMutation.isPending}
               className={`w-full rounded-lg mt-10 mb-6 py-3 text-lg bg-red-500 text-white font-bold ${dishesMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              {dishesMutation.isPending ? "Adding Dish..." : "Add Dish"}
+              {dishesMutation.isPending ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Spinner size="sm" color="white" />
+                  <span>Adding Dish...</span>
+                </div>
+              ) : (
+                "Add Dish"
+              )}
             </button>
           </>
         );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../../https/index"
 import { enqueueSnackbar } from "notistack";
+import Spinner from "../shared/Spinner";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -85,7 +86,14 @@ const Login = () => {
           disabled={loginMutation.isPending}
           className={`w-full rounded-lg mt-6 py-3 text-lg bg-red-500 text-white font-bold ${loginMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-          {loginMutation.isPending ? "Signing in..." : "Sign in"}
+          {loginMutation.isPending ? (
+            <div className="flex items-center justify-center gap-2">
+              <Spinner size="sm" color="white" />
+              <span>Signing in...</span>
+            </div>
+          ) : (
+            "Sign in"
+          )}
         </button>
       </form>
     </div>
