@@ -235,7 +235,7 @@ const Bill = () => {
         <button
           onClick={handlePlaceOrder}
           disabled={orderMutation.isPending}
-          className={`bg-[#f6b100] px-4 py-3 w-full rounded-lg text-[#1f1f1f] font-semibold text-lg ${orderMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`bg-red-500 px-4 py-3 w-full rounded-lg text-white font-semibold text-lg ${orderMutation.isPending ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           {orderMutation.isPending ? "Placing Order..." : "Place Order"}
         </button>
